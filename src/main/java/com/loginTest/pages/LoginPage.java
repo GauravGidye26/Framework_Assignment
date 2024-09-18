@@ -1,6 +1,5 @@
 package com.loginTest.pages;
 
-import com.loginTest.utils.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,13 +16,12 @@ public class LoginPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    // Locators
     public By emailField = By.cssSelector("input[type='email']");
     public By passwordField = By.cssSelector("input[type='password']");
     public By signInButton = By.cssSelector("button[type='submit']");
     public By errorMessage = By.className("src-routes-User-Login-__textError___1dP6Q");
 
-    // Actions
+
     public void openLoginPage() {
         driver.get("https://pharmacist-dev.arine.io/");
     }

@@ -11,6 +11,6 @@ Feature: Login Functionality
     Then User should see an error message "Wrong username/password"
 
   Scenario: Login with invalid email and verify error message
-    Given User am on the login page
+    Given User on the login page
     When User enter an invalid email
     Then User should see an error message "User not found"

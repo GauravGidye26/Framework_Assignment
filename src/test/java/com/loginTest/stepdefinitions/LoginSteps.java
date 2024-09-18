@@ -13,7 +13,7 @@ public class LoginSteps extends DriverFactory {
     WebDriver driver = new ChromeDriver();
     LoginPage loginPage = new LoginPage(driver);
 
-    @Given("User the login page")
+    @Given("User on the login page")
     public void user_on_the_login_page() {
         loginPage.openLoginPage();
     }

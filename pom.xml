@@ -15,11 +15,14 @@
             <artifactId>cucumber-testng</artifactId>
             <version>7.0.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.12</version>
+            <version>1.5.8</version>
+            <scope>test</scope>
         </dependency>
+
 
         <dependency>
             <groupId>commons-io</groupId>
@@ -45,11 +48,13 @@
             <version>7.10.2</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.23.0</version>
+            <version>4.24.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -57,11 +62,11 @@
             <scope>compile</scope>
         </dependency>
 
-        <!-- ExtentReports -->
+        <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>5.0.9</version> <!-- or latest version -->
+            <version>5.1.2</version>
         </dependency>
 
     </dependencies>

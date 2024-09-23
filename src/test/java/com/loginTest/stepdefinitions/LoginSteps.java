@@ -2,6 +2,8 @@ package com.loginTest.stepdefinitions;
 
 import com.loginTest.pages.LoginPage;
 import com.loginTest.utils.DriverFactory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -9,9 +11,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 
-public class LoginSteps extends DriverFactory {
-    WebDriver driver = new ChromeDriver();
-    LoginPage loginPage = new LoginPage(driver);
+import static com.loginTest.utils.DriverFactory.getDriver;
+
+public class LoginSteps{
+//    WebDriver driver = new ChromeDriver();
+//    LoginPage loginPage = new LoginPage(driver);
+
+    WebDriver driver;
+//    AdvanceSearchPage searchPage;
+    LoginPage loginPage;
+
+    @Before
+    public void setUp() {
+        driver = getDriver();
+//        searchPage = new AdvanceSearchPage(driver);
+        loginPage = new LoginPage(driver);
+    }
 
     @Given("^User on the login page$")
     public void user_on_the_login_page() {
@@ -34,5 +49,9 @@ public class LoginSteps extends DriverFactory {
     public void user_should_see_an_error_message(String expectedMessage) {
         String actualMessage = loginPage.getErrorMessage();
         Assert.assertEquals(actualMessage, expectedMessage, "Error message does not match");
+    }
+    @After
+    public void tearDown() {
+        DriverFactory.closeDriver();
     }
 }

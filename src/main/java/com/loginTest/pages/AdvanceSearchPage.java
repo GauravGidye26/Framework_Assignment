@@ -1,8 +1,6 @@
 package com.loginTest.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -120,4 +118,14 @@ public class AdvanceSearchPage {
         hpidElement.clear();
         hpidElement.sendKeys(hpid);
     }
+
+public String getTooltipErrorMessage(By fieldLocator) {
+    WebElement field = driver.findElement(fieldLocator);
+
+    field.sendKeys(Keys.TAB);
+
+    JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+    return (String) jsExecutor.executeScript("return arguments[0].validationMessage;", field);
+}
+
 }

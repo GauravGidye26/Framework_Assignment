@@ -14,17 +14,13 @@ import org.testng.Assert;
 import static com.loginTest.utils.DriverFactory.getDriver;
 
 public class LoginSteps{
-//    WebDriver driver = new ChromeDriver();
-//    LoginPage loginPage = new LoginPage(driver);
 
     WebDriver driver;
-//    AdvanceSearchPage searchPage;
     LoginPage loginPage;
 
     @Before
     public void setUp() {
         driver = getDriver();
-//        searchPage = new AdvanceSearchPage(driver);
         loginPage = new LoginPage(driver);
     }
 

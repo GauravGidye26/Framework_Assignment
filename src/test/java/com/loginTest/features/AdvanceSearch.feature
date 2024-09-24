@@ -5,6 +5,10 @@ Feature: Advanced Patient Search
     And User logs in with username "hardstop-pharmacist6@mailinator.com" and password "Password1#"
     And User clicked on the Patient Field in the Navigation Bar
 
+
+
+
+
   Scenario: Verify that Advanced Search popup opens successfully
     When User opens the Advanced Search popup
     Then Verify that the Advanced Search popup is displayed
@@ -61,3 +65,22 @@ Feature: Advanced Patient Search
     And User performs a search
     Then Verify that the search results table is displayed
     And Verify that search results contain "XD723643612345"
+
+  Scenario: Enter invalid Birth Date and verify tooltip message
+    When User opens the Advanced Search popup
+    And User enters "2002/21/07" as Birth Date
+    And User performs a search
+    Then Tooltip error message: "Please match the requested format." should display for Birth Date
+
+  Scenario: Enter invalid Phone Number and verify tooltip message
+    When User opens the Advanced Search popup
+    And User enters "1111111" as Phone
+    And User performs a search
+    Then Tooltip error message: "Please match the requested format." should display for Phone
+
+
+  Scenario: Enter invalid Zip Code and verify tooltip message
+    When User opens the Advanced Search popup
+    And User enters "123" as Zip Code
+    And User performs a search
+    Then Tooltip error message: "Please match the requested format." should display for Zip Code

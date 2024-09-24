@@ -8,7 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
@@ -118,4 +118,23 @@ public class AdvanceSearchSteps {
     public void userEntersAsHPID(String hpid) {
         searchPage.enterHPID(hpid);
     }
+
+    @Then("^Tooltip error message: \"([^\"]*)\" should display for Birth Date$")
+    public void tooltipErrorMessageForDOBShouldDisplay(String expectedErrMsg) {
+        String actualErrMsg = searchPage.getTooltipErrorMessage(searchPage.dobField);
+        Assert.assertEquals("Tooltip message did not match!", expectedErrMsg, actualErrMsg);
+    }
+
+    @Then("^Tooltip error message: \"([^\"]*)\" should display for Phone$")
+    public void tooltipErrorMessageForPhoneShouldDisplay(String expectedErrMsg) {
+        String actualErrMsg = searchPage.getTooltipErrorMessage(searchPage.phoneField);
+        Assert.assertEquals("Tooltip message did not match!", expectedErrMsg, actualErrMsg);
+    }
+
+    @Then("^Tooltip error message: \"([^\"]*)\" should display for Zip Code$")
+    public void tooltipErrorMessageForZipCodeShouldDisplay(String expectedErrMsg) {
+        String actualErrMsg = searchPage.getTooltipErrorMessage(searchPage.zipCodeField);
+        Assert.assertEquals("Tooltip message did not match!", expectedErrMsg, actualErrMsg);
+    }
+
 }

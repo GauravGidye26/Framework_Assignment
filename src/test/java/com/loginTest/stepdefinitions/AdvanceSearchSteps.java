@@ -94,10 +94,6 @@ public class AdvanceSearchSteps {
         Assert.assertEquals("Error message did not match", expectedMessage, actualMessage);
     }
 
-    @After
-    public void tearDown() {
-        DriverFactory.closeDriver();
-    }
 
     @And("^User enters \"([^\"]*)\" as Zip Code$")
     public void userEntersAsZipCode(String zipCode) {
@@ -137,4 +133,8 @@ public class AdvanceSearchSteps {
         Assert.assertEquals("Tooltip message did not match!", expectedErrMsg, actualErrMsg);
     }
 
+    @After
+    public void tearDown() {
+        DriverFactory.closeDriver();
+    }
 }

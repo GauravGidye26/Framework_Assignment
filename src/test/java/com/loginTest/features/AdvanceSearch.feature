@@ -5,10 +5,6 @@ Feature: Advanced Patient Search
     And User logs in with username "hardstop-pharmacist6@mailinator.com" and password "Password1#"
     And User clicked on the Patient Field in the Navigation Bar
 
-
-
-
-
   Scenario: Verify that Advanced Search popup opens successfully
     When User opens the Advanced Search popup
     Then Verify that the Advanced Search popup is displayed

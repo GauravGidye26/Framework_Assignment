@@ -38,27 +38,38 @@ public class conversionDatePage {
         wait.until(ExpectedConditions.elementToBeClickable(reportOption)).click();
     }
 
-    public void selectDateBefore(int days) {
+    public void selectDateBefore(int days){
         LocalDate currentDate = LocalDate.now();
-//        System.out.println(currentDate);
         LocalDate targetDate = currentDate.minusDays(days);
+        String targetMonthYear = targetDate.format(DateTimeFormatter.ofPattern("MMMM yyyy"));
 //        System.out.println(targetDate);
-        String selectDate = targetDate.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
 
         WebElement calendar = wait.until(ExpectedConditions.visibilityOfElementLocated(dateField));
-        calendar.clear();
-        calendar.sendKeys(selectDate);
+        calendar.click();
+
+        while (true) {
+            WebElement currentMonthYearElement = wait.until(ExpectedConditions.visibilityOfElementLocated(
+                    By.xpath("//div[@class='react-datepicker__current-month']")));
+            String currentMonthYear = currentMonthYearElement.getText();
+
+            if (currentMonthYear.equals(targetMonthYear)) {
+                break;
+            }
+
+            WebElement previousMonthButton = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@class='react-datepicker__navigation react-datepicker__navigation--previous']")));
+            previousMonthButton.click();
+        }
 
         By dateLocator = By.xpath("//div[@aria-label='day-" + targetDate.getDayOfMonth() + "']");
         wait.until(ExpectedConditions.elementToBeClickable(dateLocator)).click();
-//        System.out.println("Date is selected");
-
     }
 
     public void clickedConversationBtn() {
         WebElement conBtn = wait.until(ExpectedConditions.elementToBeClickable(conversationBtn));
         conBtn.click();
-//        System.out.println("Conversation Btn clicked");
+        WebElement msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='swal2-content']")));
+//        System.out.println(msg.getText());
         wait.until(ExpectedConditions.elementToBeClickable(setDate)).click();
     }
 }

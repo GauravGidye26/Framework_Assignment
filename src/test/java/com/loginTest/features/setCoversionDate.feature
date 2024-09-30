@@ -8,5 +8,5 @@ Feature: Set Conversion Date
   Scenario: Select Date before the specified no. days
     When User enters "da7e9e65-a268-4ea2-adc6-a2d8cd1b64d9" in ID Field
     And Clicks on Report option
-    Then User selects Date "10" days before current Date
+    Then User selects Date "300" days before current Date
     And User clicks on Conversation Date Button

@@ -14,15 +14,13 @@ public class patientDataPage {
     WebDriver driver;
     WebDriverWait wait;
 
-    // Constructor to initialize WebDriver and WebDriverWait
     public patientDataPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(50)); // 10 seconds wait timeout
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(50));
     }
 
-    // Locators for the fields
     private By patientIdField = By.xpath("//div//div//div//input[@aria-haspopup='listbox']");
-    private By searchButton = By.xpath("//div[@class='src-routes-PharmacistPortal-LandingPage-components-TabsGlobal-Patients-__searchIcon___2b8Nq']");
+//    private By searchButton = By.xpath("//div[@class='src-routes-PharmacistPortal-LandingPage-components-TabsGlobal-Patients-__searchIcon___2b8Nq']");
     private By firstNameField = By.xpath("//label[text()='First Name']/following-sibling::input");
     private By lastNameField = By.xpath("//label[text()='Last Name']/following-sibling::input");
     private By hosp30dField = By.xpath("//label[text()='Hosp 30d']/following-sibling::input");
@@ -34,15 +32,10 @@ public class patientDataPage {
     private By insuranceCoField = By.xpath("//label[text()='Insurance Co.']/following-sibling::span");
     private By validationField = By.xpath("//div[@class='src-routes-PharmacistPortal-LandingPage-components-TabsGlobal-Patients-__patientNameCell___fjLk4']");
 
-    // Method to navigate to the patient page
-    public void navigateToPatientPage(String url) {
-        driver.get(url);
-    }
 
-    // Method to enter patient ID and search, with explicit wait
     public void enterPatientId(String patientId) {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(patientIdField)).sendKeys(patientId); // Wait for the patient ID field to be visible
-//        wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click(); // Wait for the search button to be clickable
+        wait.until(ExpectedConditions.visibilityOfElementLocated(patientIdField)).sendKeys(patientId);
+//        wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
         wait.until(ExpectedConditions.elementToBeClickable(validationField)).click();
         scrollToData();
     }
@@ -53,42 +46,39 @@ public class patientDataPage {
         js.executeScript("window.scrollBy(0,500)");
     }
 
-    // Methods to get text from each field, with explicit wait
     public String getFirstName() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField)).getAttribute("value"); // Wait for the first name field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(firstNameField)).getAttribute("value");
     }
 
     public String getLastName() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(lastNameField)).getAttribute("value"); // Wait for the last name field to be visible
-//        System.out.println(valueLastName);
-//        return valueLastName;
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(lastNameField)).getAttribute("value");
     }
 
     public String getHosp30d() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(hosp30dField)).getAttribute("value"); // Wait for the Hosp 30d field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(hosp30dField)).getAttribute("value");
     }
 
     public String getDob() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(dobField)).getAttribute("value"); // Wait for the DOB field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(dobField)).getAttribute("value");
     }
 
     public String getSex() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(sexField)).getAttribute("value"); // Wait for the sex field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(sexField)).getAttribute("value");
     }
 
     public String getAge() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(ageField)).getAttribute("value"); // Wait for the age field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(ageField)).getAttribute("value");
     }
 
     public String getPatientLang() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(patientLangField)).getAttribute("value"); // Wait for the patient language field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(patientLangField)).getAttribute("value");
     }
 
     public String getInsuranceNum() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(insuranceNumField)).getText(); // Wait for the insurance number field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(insuranceNumField)).getText();
     }
 
     public String getInsuranceCo() {
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(insuranceCoField)).getText(); // Wait for the insurance company field to be visible
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(insuranceCoField)).getText();
     }
 }

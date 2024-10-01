@@ -28,7 +28,6 @@ public class verifyPatientDataSteps {
     @Before
     public void setUp() {
         driver = getDriver();
-//        datePage = new conversionDatePage(driver);
         login = new LoginPage(driver);
         searchPage = new AdvanceSearchPage(driver);
         patientDetailsPage = new patientDataPage(driver);
@@ -39,15 +38,11 @@ public class verifyPatientDataSteps {
         DriverFactory.closeDriver();
     }
 
-//    public verifyPatientDataSteps(WebDriver driver) {
-//        // Initialize the WebDriver and PatientDetailsPage in the constructor (Assuming WebDriver setup is already done)
-//        this.patientDetailsPage = new patientDataPage(driver);
-//    }
 
 
     @Given("^User opened the Pharmacist portal$")
     public void userOpenedThePharmacistPortal() {
-        login.openLoginPage();  // Replace with the correct URL
+        login.openLoginPage();
     }
 
     @When("^User logged in with username \"([^\"]*)\" and password \"([^\"]*)\"$")
@@ -56,39 +51,25 @@ public class verifyPatientDataSteps {
         login.enterPassword(password);
         login.clickSignIn();
     }
-//    @Given("User clicks on the Patient Field in the Navigation Bar")
-//    public void userClickedOnPatientFieldInNavigationBar() {
-//        searchPage.clickedOnPatient();
-//    }
 
-//    @Given("^User opens the Pharmacist portal$")
-//    public void userIsOnThePharmacistPortal() {
-//        login.openLoginPage();  // Replace with the correct URL
-//    }
 
     @Given("User navigates to the patient page")
     public void navigateToPatientPage() {
-        // Use the method from PatientDetailsPage to navigate to the page
-        searchPage.clickedOnPatient(); // Replace with actual URL
+        searchPage.clickedOnPatient();
     }
 
     @When("User enters the patient ID {string}")
     public void enterPatientId(String patientId) {
-        // Use the method from PatientDetailsPage to enter the patient ID
         patientDetailsPage.enterPatientId(patientId);
-//        patientDetailsPage.scrollToData();
     }
 
     @Then("The patient details should match the following:")
     public void verifyPatientDetails(io.cucumber.datatable.DataTable dataTable) {
 
-        // Convert DataTable to a Map for easier access to column names and values
         Map<String, String> expectedData = dataTable.asMaps(String.class, String.class).get(0);
 
 
-        // Verifying each field using methods from PatientDetailsPage
         Assert.assertEquals(patientDetailsPage.getFirstName(), expectedData.get("First Name"));
-//        System.out.println(expectedData.get("First Name"));
         Assert.assertEquals(patientDetailsPage.getLastName(), expectedData.get("Last Name"));
         Assert.assertEquals(patientDetailsPage.getHosp30d(), expectedData.get("Hosp 30d"));
         Assert.assertEquals(patientDetailsPage.getDob(), expectedData.get("DOB"));

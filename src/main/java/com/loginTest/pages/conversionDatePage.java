@@ -18,7 +18,7 @@ public class conversionDatePage {
 
     public conversionDatePage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(80));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(100));
     }
 
     By idField = By.xpath("//div//div//div//input[@aria-haspopup='listbox']");

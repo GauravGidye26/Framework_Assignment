@@ -8,23 +8,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
-import org.openqa.selenium.*;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-
-import static com.loginTest.utils.DriverFactory.getDriver;
 
 public class AdvanceSearchSteps {
-    WebDriver driver;
-    AdvanceSearchPage searchPage;
-    LoginPage login;
+    AdvanceSearchPage searchPage= new AdvanceSearchPage(DriverFactory.getDriver());
+    LoginPage login= new LoginPage(DriverFactory.getDriver());
 
-    @Before
-    public void setUp() {
-        driver = getDriver();
-        searchPage = new AdvanceSearchPage(driver);
-        login = new LoginPage(driver);
-    }
 
     @Given("^User is on the Pharmacist portal$")
     public void userIsOnThePharmacistPortal() {
@@ -131,10 +119,5 @@ public class AdvanceSearchSteps {
     public void tooltipErrorMessageForZipCodeShouldDisplay(String expectedErrMsg) {
         String actualErrMsg = searchPage.getTooltipErrorMessage(searchPage.zipCodeField);
         Assert.assertEquals("Tooltip message did not match!", expectedErrMsg, actualErrMsg);
-    }
-
-    @After
-    public void tearDown() {
-        DriverFactory.closeDriver();
     }
 }

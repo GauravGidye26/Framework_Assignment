@@ -1,3 +1,4 @@
+@VerifyPatientData
 Feature: Verify patient data
 
   Scenario Outline: Verify patient data for patient ID

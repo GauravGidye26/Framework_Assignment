@@ -1,3 +1,4 @@
+@AdvanceSearch
 Feature: Advanced Patient Search
 
   Background:

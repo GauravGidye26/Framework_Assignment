@@ -1,6 +1,6 @@
 package com.loginTest.stepdefinitions;
 
-//import com.loginTest.pages.AdvanceSearchPage;
+
 import com.loginTest.pages.AdvanceSearchPage;
 import com.loginTest.pages.LoginPage;
 import com.loginTest.pages.conversionDatePage;
@@ -11,27 +11,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
-
-import static com.loginTest.utils.DriverFactory.getDriver;
 
 public class conversionDateSteps {
-    WebDriver driver;
-    AdvanceSearchPage searchPage;
-    conversionDatePage datePage;
-    LoginPage login;
+    AdvanceSearchPage searchPage = new AdvanceSearchPage(DriverFactory.getDriver());
+    conversionDatePage datePage = new conversionDatePage(DriverFactory.getDriver());
+    LoginPage login = new LoginPage(DriverFactory.getDriver());
 
-    @Before
-    public void setUp() {
-        driver = getDriver();
-        datePage = new conversionDatePage(driver);
-        login = new LoginPage(driver);
-        searchPage = new AdvanceSearchPage(driver);
-    }
 
     @Given("^User opens the Pharmacist portal$")
     public void userIsOnThePharmacistPortal() {
-        login.openLoginPage();  // Replace with the correct URL
+        login.openLoginPage();
     }
 
     @When("^User login with username \"([^\"]*)\" and password \"([^\"]*)\"$")
@@ -44,12 +33,6 @@ public class conversionDateSteps {
     @Given("User clicks on the Patient Field in the Navigation Bar")
     public void userClickedOnPatientFieldInNavigationBar() {
         searchPage.clickedOnPatient();
-    }
-
-
-    @After
-    public void tearDown() {
-        DriverFactory.closeDriver();
     }
 
 
@@ -74,4 +57,5 @@ public class conversionDateSteps {
     public void userClicksOnConversationDateButton() {
         datePage.clickedConversationBtn();
     }
+
 }

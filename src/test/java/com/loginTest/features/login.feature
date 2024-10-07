@@ -1,3 +1,4 @@
+@Login
 Feature: Login Functionality
 
   Scenario: Login with valid credentials and verify successful login

@@ -2,43 +2,21 @@ package com.loginTest.stepdefinitions;
 
 import com.loginTest.pages.AdvanceSearchPage;
 import com.loginTest.pages.LoginPage;
-import com.loginTest.pages.conversionDatePage;
 import com.loginTest.utils.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import com.loginTest.pages.patientDataPage;
-
 import java.util.Map;
-
-import static com.loginTest.utils.DriverFactory.getDriver;
 
 public class verifyPatientDataSteps {
 
-    WebDriver driver;
-    AdvanceSearchPage searchPage;
-    patientDataPage patientDetailsPage;
-    LoginPage login;
-
-    @Before
-    public void setUp() {
-        driver = getDriver();
-        login = new LoginPage(driver);
-        searchPage = new AdvanceSearchPage(driver);
-        patientDetailsPage = new patientDataPage(driver);
-    }
-
-    @After
-    public void tearDown() {
-        DriverFactory.closeDriver();
-    }
-
-
+    AdvanceSearchPage searchPage= new AdvanceSearchPage(DriverFactory.getDriver());
+    patientDataPage patientDetailsPage= new patientDataPage(DriverFactory.getDriver());
+    LoginPage login= new LoginPage(DriverFactory.getDriver());
 
     @Given("^User opened the Pharmacist portal$")
     public void userOpenedThePharmacistPortal() {

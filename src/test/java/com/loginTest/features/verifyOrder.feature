@@ -15,11 +15,11 @@ Feature: Verifying column order
         When User drag the "Name" column to the "Due Date" column position
         Then Verify the column order
 
-      Scenario: Verifying column order after clicking on reset
+      Scenario: Verifying column order after drag and drop in List and clicking on reset
         Given User clicks on Task Field in the Navigation Bar
         And Clicks on Three Dots button to view hidden column list
         When User drag the "Due Date" column to the "Phone" column position in List
-        When User clicks on Reset Button
+        And User clicks on Reset Button
         Then The columns should be in default order
 
 

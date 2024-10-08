@@ -17,10 +17,12 @@ public class verifyOrderSteps {
 
     @Then("The columns should be in default order")
     public void the_columns_should_be_in_default_order() {
-//        String[] defaultOrder = { "Due Date","Priority", "Status", "Task", "Name", "Phone", "Note", "Assigned To", "Recipient Role", "Recipient Name", "Language", "GNR Date (Adh)"};
+        String[] defaultOrder = { "Due Date","Priority", "Status", "Task", "Name", "Phone", "Note", "Assigned To", "Recipient Role", "Recipient Name", "Language", "GNR Date (Adh)"};
+//        orderPage.clickOnThreeDot();
+//        orderPage.clickOnReset();
         String[] actualOrder = orderPage.getCurrentColumnOrder();
 //        System.out.println("Actual column order: " + String.join(", ", actualOrder));
-        Assert.assertEquals(orderPage.getCurrentColumnOrder(), actualOrder, "Column order is not the default order");
+        Assert.assertEquals(actualOrder, defaultOrder, "Column order is not the default order");
     }
 
     @When("User drag the {string} column to the {string} column position")
@@ -30,9 +32,10 @@ public class verifyOrderSteps {
 
     @Then("Verify the column order")
     public void verifyTheColumnOrder() {
+        String[] expectedOrder = { "Name", "Due Date","Priority", "Status", "Task", "Phone", "Note", "Assigned To", "Recipient Role", "Recipient Name", "Language", "GNR Date (Adh)"};
         String[] actualOrder = orderPage.getCurrentColumnOrder();
 //        System.out.println("Actual column order after drag and drop: " + String.join(", ", actualOrder));
-        Assert.assertEquals(orderPage.getCurrentColumnOrder(), actualOrder, "Column order is not the default order");
+        Assert.assertEquals(actualOrder, expectedOrder, "Column order is not the default order");
     }
 
     @When("User clicks on Reset Button")
@@ -49,4 +52,5 @@ public class verifyOrderSteps {
     public void userDragTheColumnToTheColumnPositionInList(String sourceColumn, String targetColumn) {
         orderPage.dragAndDropColumnInList(sourceColumn, targetColumn);
     }
+
 }

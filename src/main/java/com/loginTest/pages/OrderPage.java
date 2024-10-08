@@ -65,4 +65,5 @@ public class OrderPage {
     public void clickOnReset() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(resetBtn)).click();
     }
+
 }

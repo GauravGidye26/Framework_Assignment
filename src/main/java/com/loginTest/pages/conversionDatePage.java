@@ -68,7 +68,7 @@ public class conversionDatePage {
     public void clickedConversationBtn() {
         WebElement conBtn = wait.until(ExpectedConditions.elementToBeClickable(conversationBtn));
         conBtn.click();
-        WebElement msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='swal2-content']")));
+//        WebElement msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='swal2-content']")));
 //        System.out.println(msg.getText());
         wait.until(ExpectedConditions.elementToBeClickable(setDate)).click();
     }
